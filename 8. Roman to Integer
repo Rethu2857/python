@@ -1,0 +1,31 @@
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        romans = {
+            'I' : 1,
+            'V' : 5,
+            'X' : 10,
+            'L' : 50,
+            'C' : 100,
+            'D' : 500,
+            'M' : 1000
+        }
+        left = 0
+        right = 1
+        counter = 0
+        while right < len(s):
+            if romans[s[left]] >= romans[s[right]]:
+                counter += romans[s[left]]
+                left += 1
+                right += 1
+            elif romans[s[left]] < romans[s[right]]:
+                counter += (romans[s[right]] - romans[s[left]])
+                left += 2
+                right += 2
+        if left < len(s):
+            counter += romans[s[left]]
+        return counter
+        
