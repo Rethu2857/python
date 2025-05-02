@@ -1,0 +1,28 @@
+class Solution(object):
+    def lengthOfLIS(self, nums):
+        res = []
+
+        for i in range(len(nums)):
+            if not res or nums[i] > res[-1]:
+                res.append(nums[i])
+
+            else:
+                lp = 0
+                rp = len(res) - 1
+
+                while lp < rp:
+                    mid = (lp + rp) // 2
+                    if res[mid] < nums[i]:
+                        lp = mid + 1
+                    else:
+                        rp = mid
+                res[lp] = nums[i]
+
+        return len(res)
+                
+
+        
+
+        
+
+        
