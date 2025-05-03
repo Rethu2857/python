@@ -1,9 +1,0 @@
-SELECT
-	name,
-	bonus
-FROM
-	employee
-LEFT JOIN bonus AS bon USING(empId)
-WHERE
-	bon.bonus < 1000
-	OR bon.bonus IS NULL
